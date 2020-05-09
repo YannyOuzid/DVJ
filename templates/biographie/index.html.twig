@@ -4,12 +4,13 @@
 
 {% block body %}
 
+    <div class="container">
+        {% for biographie in biographies %}
 
-    {% for biographie in biographies %}
+            <p>{{biographie.texte}}</p>
 
-        <p>{{biographie.texte}}</p>
-
-    {% endfor %}
+        {% endfor %}
+    </div>
 
 
 {% endblock %}

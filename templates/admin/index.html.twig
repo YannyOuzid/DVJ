@@ -5,26 +5,18 @@
 {% block body %}
 
     {% if users is not empty %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Email</th>
-                    <th>Roles</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for user in users %}
-                    <tr>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.roles|join(', ') }}</td>
-                        <td>
-                        <a href="{{ path('editRole', {'id': user.id}) }}">
-                            Changer de rôle
-                        </a>
-                        </td>
-                    </tr>
-                {% endfor %}
+        <div class="row">
+            {% for user in users %}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ user.pseudo }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ user.email }}</h6>
+                        <p class="card-text">{{ user.roles|join(', ') }}</p>
+                        <a href="{{ path('editRole', {'id': user.id}) }}">Changer de rôle</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
 
     {% endif %}
 {% endblock %}

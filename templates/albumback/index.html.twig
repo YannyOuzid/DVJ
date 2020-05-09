@@ -3,10 +3,13 @@
 {% block title %}Hello AlbumbackController!{% endblock %}
 
 {% block body %}
+
+    <h1>Ajouter une nouvelle oeuvre</h1>
     {{form (form_ajout)}}
 
+    <div class="row" style="margin-top: 50px">
     {% for album in albums %}
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 18rem; margin-left: 90px">
             {% if album.photo is not null  %}
                 <img class="card-img-top" src="{{asset('uploads/'~album.photo)}}" alt="Card image cap">
             {% endif %}
@@ -19,5 +22,6 @@
         </div>
 
     {% endfor %}
+    </div>
 
 {% endblock %}

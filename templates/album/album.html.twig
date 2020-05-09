@@ -7,11 +7,30 @@
     {% if album.photo is not null  %}
         <img src="{{asset('uploads/'~album.photo)}}">
     {% endif %}
-        <h5 >{{album.nom}}</h5>
-        <p >{{album.date|date('Y-m-d')}}</p>
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-dark">
+            <h5>{{album.nom}}</h5>
+            <p>Date de sortie : {{album.date|date('Y-m-d')}}</p>
+        </li>
+    </ul>
+      
+    <div class="container">
         <p>{{album.description}}</p>
+    </div>
+
+        <h1>Commentaires</h1>
 
         {{form (form_comment)}}
+
+    {% for commentaire in commentaires %}
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-primary">
+            <p>Utilisateur : {{commentaire.utilisateur.pseudo}}</p>
+            <p>Date : {{commentaire.date|date('Y-m-d H:i:s')}}</p>
+            <p>{{commentaire.texte}}</p>
+        </li>
+    </ul>
+    {% endfor %}
 
 
 {% endblock %}

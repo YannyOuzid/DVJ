@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Commentaire;
 use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,9 +28,13 @@ class ProfilController extends AbstractController
             $pdo->flush();
         }
 
+        $commentaires = $pdo->getRepository(Commentaire::class)->findBy(
+            array('utilisateur' => $user));
+
         return $this->render('profil/index.html.twig', [
             'user' => $user,
             'form_edit' => $form->createView(),
+            'commentaires' => $commentaires,
         ]);
     }
 }

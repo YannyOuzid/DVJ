@@ -49,11 +49,18 @@ class AlbumController extends AbstractController
             $entityManager->flush();
 
         }
+
+        $pdo = $this->getDoctrine()->getManager();
+
+
+        $commentaires = $pdo->getRepository(Commentaire::class)->findBy(
+            array('album' => $album));
        
 
         return $this->render('album/album.html.twig', [
             'album' => $album,
             'form_comment' => $form_comment->createView(),
+            'commentaires' => $commentaires
         ]);
     }
 }
