@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{'error.titre404'|trans}}</h1>
+    <h1>Erreur 404</h1>
 
     <p>
-        {{'error.texte404'|trans}}
-        <a href="{{ path('accueil') }}">{{'error.accueil'|trans}}</a>.
+        La page que vous recherchez n'existe pas
+        <a href="{{ path('accueil') }}">Retour</a>.
     </p>
 {% endblock %}
