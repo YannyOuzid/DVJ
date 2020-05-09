@@ -20,7 +20,7 @@
     <ul class="list-group">
         <li class="list-group-item list-group-item-primary">
             <p>Commentaire : {{commentaire.texte}}</p>
-            <p>Date de publication : {{commentaire.date|date('Y-m-d H:i:s')}}</p>
+            <p>Date de publication : {{commentaire.date|date('d-m-Y H:i:s')}}</p>
             <a href="{{ path('albumback_show', {'id': commentaire.album.id}) }}">Nom de l'article : {{commentaire.album.nom}}</a>
         </li>
     </ul>

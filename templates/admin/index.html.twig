@@ -4,6 +4,7 @@
 
 {% block body %}
 
+    <h1>Liste des utilisateurs</h1>
     {% if users is not empty %}
         <div class="row">
             {% for user in users %}
@@ -17,6 +18,17 @@
                 </div>
             {% endfor %}
         </div>
-
     {% endif %}
+
+    <h1>Liste des commentaires</h1>
+    {% for commentaire in commentaires %}
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-primary">
+                <p>Utilisateur : {{commentaire.utilisateur.pseudo}}<p>
+                <p>Date de publication : {{commentaire.date|date('d-m-Y H:i:s')}}<p>
+                <p>Contenu : {{commentaire.texte}}<p>
+                <p>Oeuvre : {{commentaire.album.nom}}<p>
+            </li>
+        </ul>
+    {% endfor %}
 {% endblock %}

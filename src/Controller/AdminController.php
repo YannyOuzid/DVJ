@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Commentaire;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,9 +16,11 @@ class AdminController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $users = $em->getRepository(User::class)->findAll();
+        $commentaires = $em->getRepository(Commentaire::class)->findAll();
 
         return $this->render('admin/index.html.twig', [
             'users' => $users,
+            'commentaires' => $commentaires
         ]);
     }
 
