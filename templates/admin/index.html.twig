@@ -1,0 +1,30 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+
+    {% if users is not empty %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Roles</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.roles|join(', ') }}</td>
+                        <td>
+                        <a href="{{ path('editRole', {'id': user.id}) }}">
+                            Changer de rôle
+                        </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+    {% endif %}
+{% endblock %}

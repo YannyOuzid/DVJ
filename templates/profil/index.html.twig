@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfilController!{% endblock %}
+
+{% block body %}
+
+    {{user.pseudo}}
+    {{user.email}}
+    {{form (form_edit)}}
+
+{% endblock %}

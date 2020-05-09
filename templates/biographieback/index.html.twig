@@ -1,0 +1,18 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Hello BiographiebackController!{% endblock %}
+
+{% block body %}
+
+    {{form (form_ajout)}}
+
+{% for biographie in biographies %}
+
+    <p>{{biographie.texte}}</p>
+    <a href="{{ path('biographieback_edit', {'id': biographie.id}) }}" class="btn btn-primary">Edit</a>
+    <a href="{{ path('biographieback_delete', {'id': biographie.id}) }}" class="btn btn-danger">Supprimer</a>
+
+{% endfor %}
+
+
+{% endblock %}

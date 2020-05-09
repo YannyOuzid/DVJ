@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AlbumController!{% endblock %}
+
+{% block body %}
+    
+    {% if album.photo is not null  %}
+        <img src="{{asset('uploads/'~album.photo)}}">
+    {% endif %}
+        <h5 >{{album.nom}}</h5>
+        <p >{{album.date|date('Y-m-d')}}</p>
+        <p>{{album.description}}</p>
+
+        {{form (form_comment)}}
+
+
+{% endblock %}

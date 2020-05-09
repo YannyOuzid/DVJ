@@ -1,0 +1,23 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Hello AlbumbackController!{% endblock %}
+
+{% block body %}
+    {{form (form_ajout)}}
+
+    {% for album in albums %}
+        <div class="card" style="width: 18rem;">
+            {% if album.photo is not null  %}
+                <img class="card-img-top" src="{{asset('uploads/'~album.photo)}}" alt="Card image cap">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{album.nom}}</h5>
+                <p class="card-text">{{album.date|date('Y-m-d')}}</p>
+                <a href="{{ path('albumback_edit', {'id': album.id}) }}" class="btn btn-primary">Edit</a>
+                <a href="{{ path('albumback_delete', {'id': album.id}) }}" class="btn btn-danger">Supprimer</a>
+            </div>
+        </div>
+
+    {% endfor %}
+
+{% endblock %}
