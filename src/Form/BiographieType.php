@@ -13,6 +13,7 @@ class BiographieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('titre')
             ->add('texte')
             ->add('sauvegarder', SubmitType::class );
         ;

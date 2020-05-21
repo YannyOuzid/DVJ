@@ -1,18 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AlbumController!{% endblock %}
+{% block title %}Album{% endblock %}
 
 {% block body %}
-    
-    {% if album.photo is not null  %}
-        <img src="{{asset('uploads/'~album.photo)}}">
-    {% endif %}
-    <ul class="list-group">
-        <li class="list-group-item list-group-item-dark">
-            <h5>{{album.nom}}</h5>
-            <p>Date de sortie : {{album.date|date('d-m-Y')}}</p>
-        </li>
-    </ul>
+
+
+    <div class="container" style="padding-left: 400px">
+        {% if album.photo is not null  %}
+            <img src="{{asset('uploads/'~album.photo)}}">
+        {% endif %}
+    </div>
+
+
+    <div class="text-center">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-dark">
+                <h5>{{album.nom}}</h5>
+                <p>Date de sortie : {{album.date|date('d-m-Y')}}</p>
+            </li>
+        </ul>
+    </div>
       
     <div class="container">
         <p>{{album.description}}</p>

@@ -22,6 +22,11 @@ class Biographie
      */
     private $texte;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $titre;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +40,18 @@ class Biographie
     public function setTexte(string $texte): self
     {
         $this->texte = $texte;
+
+        return $this;
+    }
+
+    public function getTitre(): ?string
+    {
+        return $this->titre;
+    }
+
+    public function setTitre(?string $titre): self
+    {
+        $this->titre = $titre;
 
         return $this;
     }

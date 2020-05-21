@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Album;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -16,7 +17,10 @@ class AlbumType extends AbstractType
     {
         $builder
             ->add('Nom')
-            ->add('Date')
+            ->add('date',DateType::class, array(
+                'widget' => 'choice',
+                'years' => range(date('Y'), date('Y')-50),
+              ))
             ->add('photoUpload', FileType::class, [
                 'label' => 'Photo',
 

@@ -1,6 +1,6 @@
 {% extends 'back.html.twig' %}
 
-{% block title %}Hello AlbumbackController!{% endblock %}
+{% block title %}Album Back{% endblock %}
 
 {% block body %}
 
@@ -15,7 +15,7 @@
             {% endif %}
             <div class="card-body">
                 <h5 class="card-title">{{album.nom}}</h5>
-                <p class="card-text">{{album.date|date('Y-m-d')}}</p>
+                <p class="card-text">{{album.date|date('d-m-Y')}}</p>
                 <a href="{{ path('albumback_edit', {'id': album.id}) }}" class="btn btn-primary">Edit</a>
                 <a href="{{ path('albumback_delete', {'id': album.id}) }}" class="btn btn-danger">Supprimer</a>
             </div>
