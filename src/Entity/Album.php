@@ -40,7 +40,7 @@ class Album
     private $Description;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="album")
+     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="album", orphanRemoval=true)
      */
     private $commentaires;
 
@@ -110,6 +110,7 @@ class Album
         }
         return true;
     }
+    
 
     /**
      * @return Collection|Commentaire[]

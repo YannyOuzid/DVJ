@@ -15,21 +15,24 @@ class ProfilController extends AbstractController
      */
     public function index(Request $request)
     {
-        $pdo = $this->getDoctrine()->getManager();
+        $pdo = $this->getDoctrine()->getManager(); // Connexion à la base de donnée
 
-        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $user = $this->get('security.token_storage')->getToken()->getUser(); // Récupération du token de l'utilisateur
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserType::class, $user); // Création du formulaire pour l'utilisateur
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
+
             $pdo = $this->getDoctrine()->getManager();
-            $pdo->persist($user);
+
+            $pdo->persist($user); // Modification des informations
+
             $pdo->flush();
         }
 
         $commentaires = $pdo->getRepository(Commentaire::class)->findBy(
-            array('utilisateur' => $user));
+            array('utilisateur' => $user)); // Récupérations des informations de la colonne utilisateur dans la table User en fonction du Token
 
         return $this->render('profil/index.html.twig', [
             'user' => $user,

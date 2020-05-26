@@ -66,11 +66,12 @@ class AlbumbackController extends AbstractController
      */
     public function edit(Request $request, Album $album): Response
     {
-        $form = $this->createForm(AlbumType::class, $album);
+        $form = $this->createForm(AlbumType::class, $album); //Création d'un formulaire pour les albums
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->getDoctrine()->getManager()->flush(); //Modification des informations
 
         }
 
@@ -91,8 +92,8 @@ class AlbumbackController extends AbstractController
         if($album !=null){
 
             $pdo = $this->getDoctrine()->getManager();
-            $pdo->remove($album);
-            $album->supprphoto();
+            $pdo->remove($album); //Suppression des données
+            $album->supprphoto(); //Suppression de la photo
             $pdo->flush();
         }
         return $this->redirectToRoute('albumback');

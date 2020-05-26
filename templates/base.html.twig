@@ -49,10 +49,18 @@
         {% else %}
 
         <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        
+            <div>
+                <a class="navbar-brand" href="{{ path('accueil')}}">Accueil</a>
+                <a class="navbar-brand" href="{{ path('biographie')}}">Biographie</a>
+                <a class="navbar-brand" href="{{ path('album')}}">Oeuvres</a>
+            </div>
+
             <div>
                 <a class="navbar-brand" href="{{ path('app_login')}}">Login</a>
                 <a class="navbar-brand" href="{{ path('app_register')}}">Register</a>
             </div>
+                
         {% endif %}
         </nav>
 

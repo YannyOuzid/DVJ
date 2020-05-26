@@ -13,9 +13,9 @@ class BiographieController extends AbstractController
      */
     public function index()
     {
-        $pdo = $this->getDoctrine()->getManager();
+        $pdo = $this->getDoctrine()->getManager(); //Connexion à la base de données
 
-        $biographies = $pdo->getRepository(Biographie::class)->findAll();
+        $biographies = $pdo->getRepository(Biographie::class)->findAll(); //Récupération de toutes les informations dans la table Biographie
 
         return $this->render('biographie/index.html.twig', [
             'biographies' => $biographies,

@@ -27,7 +27,11 @@
 
         <h1>Commentaires</h1>
 
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
         {{form (form_comment)}}
+
+        {% endif %}
 
     {% for commentaire in commentaires %}
     <ul class="list-group">
