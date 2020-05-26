@@ -17,7 +17,7 @@ class ProfilController extends AbstractController
     {
         $pdo = $this->getDoctrine()->getManager(); // Connexion à la base de donnée
 
-        $user = $this->get('security.token_storage')->getToken()->getUser(); // Récupération du token de l'utilisateur
+        $user = $this->getUser(); // Récupération de l'utilisateur
 
         $form = $this->createForm(UserType::class, $user); // Création du formulaire pour l'utilisateur
 
@@ -39,5 +39,22 @@ class ProfilController extends AbstractController
             'form_edit' => $form->createView(),
             'commentaires' => $commentaires,
         ]);
+    }
+
+     /**
+     * @Route ("commentaire/delete/{id}", name="commentaire_delete")
+     */
+
+    public function delete(Commentaire $commentaire=null){
+
+        //Suppression des produits
+
+        if($commentaire !=null){
+
+            $pdo = $this->getDoctrine()->getManager();
+            $pdo->remove($commentaire); //Suppression des données
+            $pdo->flush();
+        }
+        return $this->redirectToRoute('profil');
     }
 }

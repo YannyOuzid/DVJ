@@ -12,16 +12,17 @@
     </ul>
 
     <h1>Modifier ces informations</h1>
-    {{form (form_edit)}}
+    {{form (form_edit)}}<!--Form de édition du profil-->
 
     <h1>Liste de mes commentaires</h1>
 
-    {% for commentaire in commentaires %}
+    {% for commentaire in commentaires %}<!--Obtention de tout les commentaires créer par le compte-->
     <ul class="list-group">
         <li class="list-group-item list-group-item-primary">
             <p>Commentaire : {{commentaire.texte}}</p>
             <p>Date de publication : {{commentaire.date|date('d-m-Y H:i:s')}}</p>
-            <a href="{{ path('albumback_show', {'id': commentaire.album.id}) }}">Nom de l'article : {{commentaire.album.nom}}</a>
+            <a href="{{ path('album_show', {'id': commentaire.album.id}) }}">Nom de l'article : {{commentaire.album.nom}}</a>
+            <a href="{{ path('commentaire_delete', {'id': commentaire.id}) }}" class="btn btn-danger">Supprimer</a>
         </li>
     </ul>
     {% endfor %}

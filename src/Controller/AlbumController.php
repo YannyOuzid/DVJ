@@ -28,18 +28,13 @@ class AlbumController extends AbstractController
     }
 
      /**
-     * @Route("album/show/{id}", name="albumback_show")
+     * @Route("album/show/{id}", name="album_show")
      */
     public function show(Album $album, Request $request)
     {
         $commentaire = new Commentaire();
 
-        $user = $this->get('security.token_storage')->getToken()->getUser(); // Obtenir le token de l'utilisateur
-
-        if($user = null){
-
-        }
-        else{
+        $user = $this->getUser(); // Obtenir l'utilisateur
 
         $commentaire->setUtilisateur($user); // Mettre l'id de l'utilisateur dans la table des commentaires
         $commentaire->setDate(new \DateTime('now')); //Obtenir la date
@@ -54,7 +49,7 @@ class AlbumController extends AbstractController
             $entityManager->flush();
 
         }
-    }
+    
 
         $pdo = $this->getDoctrine()->getManager(); // Connexion à la base de données
 
@@ -62,7 +57,6 @@ class AlbumController extends AbstractController
         $commentaires = $pdo->getRepository(Commentaire::class)->findBy(
             array('album' => $album)); // Obtenir les informations de la colonne album dans la table Commentaire 
        
-
         return $this->render('album/album.html.twig', [
             'album' => $album,
             'form_comment' => $form_comment->createView(),

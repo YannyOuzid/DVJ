@@ -27,18 +27,19 @@
 
         <h1>Commentaires</h1>
 
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}<!--Form qui apparait seulement si on est connecté-->
 
-        {{form (form_comment)}}
+        {{form (form_comment)}}<!--Form des commentaires-->
 
         {% endif %}
 
-    {% for commentaire in commentaires %}
+    {% for commentaire in commentaires %} <!--Obtentions de tout les commentaires de la page-->
     <ul class="list-group">
         <li class="list-group-item list-group-item-primary">
             <p>Utilisateur : {{commentaire.utilisateur.pseudo}}</p>
             <p>Date : {{commentaire.date|date('d-m-Y H:i:s')}}</p>
             <p>{{commentaire.texte}}</p>
+
         </li>
     </ul>
     {% endfor %}

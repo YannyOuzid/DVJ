@@ -1,22 +1,26 @@
 {% extends 'back.html.twig' %}
 
-{% block title %}Hello BiographiebackController!{% endblock %}
+{% block title %}Biographieback{% endblock %}
 
 {% block body %}
 
     <h1>Ajouter un nouveau paragraphe pour la biographie</h1>
 
-    {{form (form_ajout)}}
+    {{form (form_ajout)}}<!--From d'ajout de la biographie-->
 
-{% for biographie in biographies %}
+    <div class="container">
 
-    <h2>{{biographie.titre}}</h2>
+    {% for biographie in biographies %}<!--Obtention de toute le biographie-->
 
-    <p>{{biographie.texte}}</p>
-    <a href="{{ path('biographieback_edit', {'id': biographie.id}) }}" class="btn btn-primary">Edit</a>
-    <a href="{{ path('biographieback_delete', {'id': biographie.id}) }}" class="btn btn-danger">Supprimer</a>
+        <h2>{{biographie.titre}}</h2>
 
-{% endfor %}
+        <p>{{biographie.texte}}</p>
+        <a href="{{ path('biographieback_edit', {'id': biographie.id}) }}" class="btn btn-primary">Edit</a>
+        <a href="{{ path('biographieback_delete', {'id': biographie.id}) }}" class="btn btn-danger">Supprimer</a>
+
+    {% endfor %}
+
+    </div>
 
 
 {% endblock %}

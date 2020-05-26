@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="row" style="margin-top: 50px">
-    {% for album in albums %}
+    {% for album in albums %}<!--Obtention de tout les albums-->
         <div class="card" style="width: 18rem; margin-left: 90px">
             {% if album.photo is not null  %}
                 <img class="card-img-top" src="{{asset('uploads/'~album.photo)}}" alt="Card image cap">
