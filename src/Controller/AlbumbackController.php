@@ -70,7 +70,34 @@ class AlbumbackController extends AbstractController
 
         $form->handleRequest($request);
 
+        if($form->isSubmitted() && $form->isValid()){
+ 
+            $fichier = $form->get('photoUpload')->getData();
+
+            if($fichier){
+                $album->supprphoto();
+                $nomFichier = uniqid() . '.' . $fichier->guessExtension();
+
+                try{
+                    //On essaie de deplacer le fichier
+                    $fichier->move(
+                    $this->getParameter('upload_dir'),
+                    $nomFichier
+                    );
+                }
+                catch(FileException $e){
+                    $this->addFlash('danger', "Impossible d'uploder le fichier");
+                    return $this->redirecttoRoute('error');
+
+                }
+
+                $album->setPhoto($nomFichier);
+            }
+           
+        }
+
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $this->getDoctrine()->getManager()->flush(); //Modification des informations
 
         }
