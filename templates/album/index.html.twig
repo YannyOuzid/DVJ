@@ -13,7 +13,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{album.nom}}</h5>
                 <p class="card-text">{{album.date|date('Y-m-d')}}</p>
-                <a href="{{ path('albumback_show', {'id': album.id}) }}" class="btn btn-primary">Voir</a>
+                <a href="{{ path('album_show', {'id': album.id}) }}" class="btn btn-primary">Voir</a>
             </div>
         </div>
 
